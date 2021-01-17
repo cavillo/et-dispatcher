@@ -1,0 +1,46 @@
+kind: pipeline
+name: polymetis-node-ci
+
+services:
+- name: rabbit
+  image: 'rabbitmq:3.7-management-alpine'
+  ports:
+  - 5672
+  when:
+    event: [ pull_request ]
+    branch: [ main ]
+
+steps:
+  - name: lint-test
+    group: lint-test
+    image: node:latest
+    commands:
+    - npm i --silent
+    - npm run lint
+    - npm run test
+    when:
+      event: [ pull_request ]
+      branch: main
+
+  - name: build
+    group: build
+    image: node:latest
+    commands:
+    - npm i --silent
+    - npm run build
+    when:
+      event: push
+      branch: main
+
+  - name: npm
+    image: plugins/npm
+    settings:
+      email:
+        from_secret: npm_email
+      username:
+        from_secret: npm_username
+      password:
+        from_secret: npm_password
+    when:
+      event: push
+      branch: main
