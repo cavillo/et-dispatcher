@@ -12,6 +12,7 @@
     "inlineSourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "declaration": true,
     "skipLibCheck": true
   },
   "include": [
