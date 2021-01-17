@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "lib": [
+      "ESNext"
+    ],
+    "outDir": "dist",
+    "baseUrl": "src",
+    "rootDir": "src",
+    "inlineSources": true,
+    "inlineSourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test"
+  ],
+  "typeRoots": [
+    "node_modules/@types"
+  ]
+}
