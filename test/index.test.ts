@@ -12,7 +12,7 @@ let channel: amqplib.Channel;
 
 describe('Tests', () => {
   before(async () => {
-    connection = await amqplib.connect('amqp://localhost');
+    connection = await amqplib.connect('amqp://rabbit');
     channel = await connection.createChannel();
 
     const emit: EmitFunction = async (topic, data) => {
